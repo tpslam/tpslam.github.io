@@ -1,8 +1,10 @@
 ---
-title: "About"
+pagetitle: "About"
 ---
 
-Hi! My name is Tiffany, and I'm a first-year M.S. student in Epidemiology.
+::: {style="padding-top: 40px"}
+Hello! My name is Tiffany, and I'm a first-year M.S. student in Epidemiology.
+:::
 
 I currently work as a research assistant where I analyze quantitative and qualitative data across high-stakes projects to translate complex findings into actionable recommendations for clients. Check out my [resume](resume.html).
 
