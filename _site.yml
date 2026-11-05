@@ -1,0 +1,17 @@
+name: "Yay internet!"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "About"
+      href: about.html
+    - text: "Resume"
+      href: resume.html
+    - icon: fa-github fa-lg
+      href: http://github.com/tpslam/
+    - icon: fa-linkedin fa-lg
+      href: https://www.linkedin.com/in/tiffany-lam-77711b345/
+    - icon: fa-envelope fa-lg
+      href: mailto:<tiffany.lam21@gmail.com>
+output:
+  html_document
