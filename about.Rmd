@@ -3,7 +3,7 @@ pagetitle: "About"
 ---
 
 ::: {style="padding-top: 40px"}
-## About Me
+## Introduction
 :::
 
 Hello! My name is Tiffany, and I'm a first-year M.S. student in Epidemiology.
