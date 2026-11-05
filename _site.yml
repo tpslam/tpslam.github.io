@@ -16,4 +16,12 @@ navbar:
     - icon: fa-envelope fa-lg
       href: mailto:<tiffany.lam21@gmail.com>
 output:
-  html_document
+  html_document:    
+    theme:
+      version: 4
+      bootswatch: flatly
+      primary: "#002868"
+      danger: "#BF0A30"
+      navbar-bg: "#002868"
+      link-color: "#BF0A30"
+      body-bg: "#FFFFFF"
