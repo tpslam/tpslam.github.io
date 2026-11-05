@@ -8,4 +8,5 @@ I currently work as a research assistant where I analyze quantitative and qualit
 
 Outside of work, I love hiking, powerlifting, and spending time with Belle.
 
-![](images/Belle.jpeg){width=30%}
+This is Belle. She is 11 years old.\
+![](images/Belle.jpeg){width=50%}
