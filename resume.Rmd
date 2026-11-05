@@ -6,7 +6,7 @@ output:
     toc_float: true
 ---
 
-::: {style="text-align: center;"}
+::: {style="text-align: center; padding-top: 40px"}
 [Tiffany Lam]{style="font-size: 2.5em; font-weight: bold"}\
 Boston, MA · [tiffany.lam21@gmail.com](mailto:tiffany.lam21@gmail.com) · [LinkedIn](https://www.linkedin.com/in/tiffany-lam-77711b345/) · [GitHub](http://github.com/tpslam/)
 :::
