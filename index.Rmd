@@ -1,3 +1,19 @@
 ---
 title: "Welcome!"
 ---
+
+This is my website for P8105 homework 4. It was built in R with R Markdown and is hosted on GitHub. The source code, including the full commit history, is in this [GitHub repository](https://github.com/tpslam/tpslam.github.io).
+
+## What you'll find here
+
+- **About:** a short introduction about who I am.
+
+- **Resume:** my academic and professional experience, including my education, research positions, volunteer work, and publications.
+
+- **Dashboard:** an interactive dashboard built with `flexdashboard` and `plotly` using the data from the `p8105.datasets` package.
+
+- **Links:** the menu icons at the top of every page link to my GitHub, LinkedIn, and email.
+
+## How it was made
+
+Each page is an R Markdown (`.Rmd`) file that is rendered into HTML, and the site structure and navigation are set in a `_site.yml` file. Everything is organized in an RStudio project and tracked with Git, so the whole site can be rebuilt from the files in the repository.
