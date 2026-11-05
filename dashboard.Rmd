@@ -1,23 +1,21 @@
 ---
-pagetitle: "Dashboard"
+title: "Instacart Dashboard"
 output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    navbar:
+      - { title: "Home", href: "index.html", align: left }
+      - { title: "About", href: "about.html", align: left }
+      - { title: "Resume", href: "resume.html", align: left }
 ---
 
-::: {style="padding-top: 40px"}
-## Instacart Dashboard
-:::
-
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 library(tidyverse)
 library(plotly)
 library(p8105.datasets)
 data("instacart")
-```
 
-```{r, echo = FALSE}
 day_names =
   c("Sunday",
     "Monday",
@@ -38,9 +36,12 @@ orders =
   distinct(order_id, order_dow, order_hour_of_day, days_since_prior_order)
 ```
 
-#### Instacart Orders by Day of Week and Hour of Day
+Column {data-width = 550}
+-----------------------------------------------------------------------
 
-```{r, echo = FALSE, fig.width = 10, fig.height = 4}
+### Instacart Orders by Day of Week and Hour of Day
+
+```{r, echo = FALSE}
 heat_counts =
   orders |> 
   count(order_dow, order_hour_of_day, name = "n_orders") |> 
@@ -67,9 +68,12 @@ plot_ly(
   )
 ```
 
-#### Distribution of Days Between Customers' Instacart Orders
+Column {data-width = 450}
+-----------------------------------------------------------------------
 
-```{r, echo = FALSE, fig.width = 10, fig.height = 4}
+### Distribution of Days Between Customers' Instacart Orders
+
+```{r, echo = FALSE}
 orders |> 
   plot_ly(
     x = ~days_since_prior_order, type = "histogram",
@@ -87,9 +91,9 @@ orders |>
   )
 ```
 
-#### Top 15 Instacart Products by Reorder Rate (Ordered at Least 1,000 Times)
+### Top 15 Instacart Products by Reorder Rate (Ordered at Least 1,000 Times) {data-height=650}
 
-```{r, echo = FALSE, fig.width = 10, fig.height = 5}
+```{r, echo = FALSE}
 instacart |> 
   group_by(product_name) |> 
   summarize(
@@ -110,10 +114,7 @@ instacart |>
     marker = list(color = "#002868")
   ) |> 
   layout(
-    xaxis = list(
-      title = "Proportion of orders that were reorders",
-      range = c(0, 1)
-    ),
+    xaxis = list(title = "Proportion of orders that were reorders"),
     yaxis = list(title = "", categoryorder = "total ascending"),
     showlegend = FALSE
   )
