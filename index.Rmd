@@ -1,10 +1,14 @@
 ---
-title: "Welcome!"
+pagetitle: "Welcome"
 ---
+
+::: {style="padding-top: 40px"}
+## Welcome!
+:::
 
 This is my website for P8105 homework 4. It was built in R with R Markdown and is hosted on GitHub. The source code, including the full commit history, is in this [GitHub repository](https://github.com/tpslam/tpslam.github.io).
 
-## What you'll find here
+### What you'll find here
 
 - **About:** a short introduction about who I am.
 
@@ -14,6 +18,6 @@ This is my website for P8105 homework 4. It was built in R with R Markdown and i
 
 - **Links:** the menu icons at the top of every page link to my GitHub, LinkedIn, and email.
 
-## How it was made
+### How it was made
 
 Each page is an R Markdown file that is rendered into HTML, and the site structure and navigation are set in a `_site.yml` file. Everything is organized in an RStudio project and tracked with Git, so the whole site can be rebuilt from the files in the repository.
