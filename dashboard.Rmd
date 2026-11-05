@@ -39,32 +39,35 @@ orders =
 Column {data-width = 550}
 -----------------------------------------------------------------------
 
-### Instacart Orders by Day of Week and Hour of Day
+### Number of Items per Instacart Order by Day of Week
 
 ```{r, echo = FALSE}
-heat_counts =
-  orders |> 
-  count(order_dow, order_hour_of_day, name = "n_orders") |> 
-  complete(
-    order_dow = 0:6, order_hour_of_day = 0:23,
-    fill = list(n_orders = 0)
-  ) |> 
-  arrange(order_dow, order_hour_of_day)
-
-heat_matrix =
-  matrix(heat_counts$n_orders, nrow = 7, byrow = TRUE)
-
-plot_ly(
-  x = 0:23, y = day_names, z = heat_matrix, type = "heatmap",
-  colorscale = list(c(0, "#FFFFFF"), c(1, "#002868")),
-  colorbar = list(title = "Orders")
-) |> 
+# Box statistics come from every order, so the page doesn't need to embed
+# over 100,000 data points. Whiskers extend to the most extreme values
+# within 1.5 x IQR; points beyond that are not drawn.
+instacart |>
+  count(order_id, order_dow, name = "n_items") |>
+  group_by(order_dow) |>
+  summarize(
+    q1 = quantile(n_items, 0.25, names = FALSE),
+    med = median(n_items),
+    q3 = quantile(n_items, 0.75, names = FALSE),
+    iqr = q3 - q1,
+    lower = min(n_items[n_items >= q1 - 1.5 * iqr]),
+    upper = max(n_items[n_items <= q3 + 1.5 * iqr]),
+    .groups = "drop"
+  ) |>
+  mutate(day = factor(day_names[order_dow + 1], levels = day_names)) |>
+  plot_ly(
+    x = ~day, q1 = ~q1, median = ~med, q3 = ~q3,
+    lowerfence = ~lower, upperfence = ~upper, type = "box",
+    fillcolor = "rgba(0, 40, 104, 0.35)",
+    line = list(color = "#002868")
+  ) |>
   layout(
-    xaxis = list(
-      title = "Hour of day",
-      tickvals = 0:23, ticktext = hour_labels, tickangle = -45
-    ),
-    yaxis = list(title = "", autorange = "reversed")
+    xaxis = list(title = ""),
+    yaxis = list(title = "Items per order", rangemode = "tozero"),
+    showlegend = FALSE
   )
 ```
 
@@ -91,31 +94,31 @@ orders |>
   )
 ```
 
-### Top 15 Instacart Products by Reorder Rate (Ordered at Least 1,000 Times) {data-height=650}
+### Instacart Orders by Day of Week and Hour of Day
 
 ```{r, echo = FALSE}
-instacart |> 
-  group_by(product_name) |> 
-  summarize(
-    n_ordered = n(),
-    prop_reordered = mean(reordered),
-    .groups = "drop"
+heat_counts =
+  orders |> 
+  count(order_dow, order_hour_of_day, name = "n_orders") |> 
+  complete(
+    order_dow = 0:6, order_hour_of_day = 0:23,
+    fill = list(n_orders = 0)
   ) |> 
-  filter(n_ordered >= 1000) |> 
-  slice_max(order_by = prop_reordered, n = 15, with_ties = FALSE) |> 
-  mutate(
-    label = str_c(product_name, "<br>Reorder rate: ",
-                  round(prop_reordered, 2),
-                  "<br>Times ordered: ", n_ordered)
-  ) |> 
-  plot_ly(
-    x = ~prop_reordered, y = ~product_name, type = "bar", orientation = "h",
-    text = ~label, hoverinfo = "text",
-    marker = list(color = "#002868")
-  ) |> 
+  arrange(order_dow, order_hour_of_day)
+
+heat_matrix =
+  matrix(heat_counts$n_orders, nrow = 7, byrow = TRUE)
+
+plot_ly(
+  x = 0:23, y = day_names, z = heat_matrix, type = "heatmap",
+  colorscale = list(c(0, "#FFFFFF"), c(1, "#002868")),
+  colorbar = list(title = "Orders")
+) |> 
   layout(
-    xaxis = list(title = "Proportion of orders that were reorders"),
-    yaxis = list(title = "", categoryorder = "total ascending"),
-    showlegend = FALSE
+    xaxis = list(
+      title = "Hour of day",
+      tickvals = 0:23, ticktext = hour_labels, tickangle = -45
+    ),
+    yaxis = list(title = "", autorange = "reversed")
   )
 ```
