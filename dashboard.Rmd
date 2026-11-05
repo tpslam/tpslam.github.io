@@ -1,0 +1,120 @@
+---
+pagetitle: "Dashboard"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+::: {style="padding-top: 40px"}
+## Instacart Dashboard
+:::
+
+```{r, include = FALSE}
+library(tidyverse)
+library(plotly)
+library(p8105.datasets)
+data("instacart")
+```
+
+```{r, echo = FALSE}
+day_names =
+  c("Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday")
+
+hour_labels =
+  c("12 AM",
+    str_c(1:11," AM"),
+    "12 PM",
+    str_c(1:11, " PM"))
+
+orders =
+  instacart |> 
+  distinct(order_id, order_dow, order_hour_of_day, days_since_prior_order)
+```
+
+#### Instacart Orders by Day of Week and Hour of Day
+
+```{r, echo = FALSE, fig.width = 10, fig.height = 4}
+heat_counts =
+  orders |> 
+  count(order_dow, order_hour_of_day, name = "n_orders") |> 
+  complete(
+    order_dow = 0:6, order_hour_of_day = 0:23,
+    fill = list(n_orders = 0)
+  ) |> 
+  arrange(order_dow, order_hour_of_day)
+
+heat_matrix =
+  matrix(heat_counts$n_orders, nrow = 7, byrow = TRUE)
+
+plot_ly(
+  x = 0:23, y = day_names, z = heat_matrix, type = "heatmap",
+  colorscale = list(c(0, "#FFFFFF"), c(1, "#002868")),
+  colorbar = list(title = "Orders")
+) |> 
+  layout(
+    xaxis = list(
+      title = "Hour of day",
+      tickvals = 0:23, ticktext = hour_labels, tickangle = -45
+    ),
+    yaxis = list(title = "", autorange = "reversed")
+  )
+```
+
+#### Distribution of Days Between Customers' Instacart Orders
+
+```{r, echo = FALSE, fig.width = 10, fig.height = 4}
+orders |> 
+  plot_ly(
+    x = ~days_since_prior_order, type = "histogram",
+    xbins = list(start = -0.5, end = 30.5, size = 1),
+    marker = list(color = "#BF0A30", line = list(color = "#FFFFFF", width = 1))
+  ) |> 
+  layout(
+    xaxis = list(
+      title = "Days since prior order",
+      tickvals = seq(0, 30, 5),
+      ticktext = c("0", "5", "10", "15", "20", "25", "30+")
+    ),
+    yaxis = list(title = "Number of orders"),
+    bargap = 0.05
+  )
+```
+
+#### Top 15 Instacart Products by Reorder Rate (Ordered at Least 1,000 Times)
+
+```{r, echo = FALSE, fig.width = 10, fig.height = 5}
+instacart |> 
+  group_by(product_name) |> 
+  summarize(
+    n_ordered = n(),
+    prop_reordered = mean(reordered),
+    .groups = "drop"
+  ) |> 
+  filter(n_ordered >= 1000) |> 
+  slice_max(order_by = prop_reordered, n = 15, with_ties = FALSE) |> 
+  mutate(
+    label = str_c(product_name, "<br>Reorder rate: ",
+                  round(prop_reordered, 2),
+                  "<br>Times ordered: ", n_ordered)
+  ) |> 
+  plot_ly(
+    x = ~prop_reordered, y = ~product_name, type = "bar", orientation = "h",
+    text = ~label, hoverinfo = "text",
+    marker = list(color = "#002868")
+  ) |> 
+  layout(
+    xaxis = list(
+      title = "Proportion of orders that were reorders",
+      range = c(0, 1)
+    ),
+    yaxis = list(title = "", categoryorder = "total ascending"),
+    showlegend = FALSE
+  )
+```
