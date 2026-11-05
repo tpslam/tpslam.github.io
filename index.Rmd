@@ -13,9 +13,9 @@ This is my website for P8105 homework 4. It was built in R with R Markdown and i
 - **About:** a short introduction about who I am.
 - **Resume:** my academic and professional experience, including my education, research positions, volunteer work, and publications.
 - **Dashboard:** an interactive dashboard built with `flexdashboard` and `plotly` using `Instacart` data from the `p8105.datasets` package. It includes three plots:
-    - **Heatmap:** the number of orders placed for each day of the week and hour of the day.
-    - **Histogram:** the number of days between a customer's orders, with the last bar covering 30 or more days.
     - **Box plot:** the number of items per order on each day of the week.
+    - **Histogram:** the number of days between a customer's orders, with the last bar covering 30 or more days.
+    - **Heatmap:** the number of orders placed for each day of the week and hour of the day.
 - **Links:** the menu icons at the top of every page link to my GitHub, LinkedIn, and email.
 
 ### How it was made
