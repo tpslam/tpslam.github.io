@@ -5,3 +5,71 @@ output:
     toc: true
     toc_float: true
 ---
+
+::: {style="text-align: center;"}
+[Tiffany Lam]{style="font-size: 2.5em; font-weight: bold"}\
+Boston, MA · [tiffany.lam21@gmail.com](mailto:tiffany.lam21@gmail.com) · [LinkedIn](https://www.linkedin.com/in/tiffany-lam-77711b345/) · [GitHub](http://github.com/tpslam/)
+:::
+
+## Education
+
+**Columbia University**, Mailman School of Public Health, New York, NY
+Master of Science, Epidemiology. [May 2028]{style="float: right"}
+
+- *Relevant coursework:* Introduction to Biostatistical Methods, Data Science I
+
+**Boston University**, College of Arts and Sciences, Boston, MA
+Bachelor of Arts, Psychology. GPA: 3.8. [May 2023]{style="float: right"}
+
+## Research Experience
+
+### American Institutes for Research, Education Systems
+
+*Research Assistant* [September 2023 – Present]{style="float: right"}
+
+Analyze quantitative and qualitative data and contribute to research, evaluation, and administrative functions across multiple projects focused on advancing equity in education systems.
+
+**Program Evaluation**
+
+- Conducted in-depth reviews of 43 schools and 15 districts to provide critical information and actionable recommendations for improvement.
+- Collected and analyzed data through classroom observations, interviews, and focus groups; synthesized findings into reports shared with schools and districts.
+
+**Technical Support**
+
+- Drafted user documentation and tested functionality for MetaReviewer, a browser-based collaborative tool that supports researchers conducting quantitative systematic reviews and meta-analyses.
+- Supported users and collected feedback for continuous improvement; managed dissemination of MetaReviewer's features to users.
+- Co-authored a systematic literature review on dual-certification to provide policymakers with evidence-based strategies that could improve students with disabilities' access to educational opportunities.
+- Developed a data collection tool for study coding using REDCap; screened 10,000+ abstracts and 5,000+ full-text papers, coded 1,000+ articles, and cleaned datasets in Stata.
+
+**Program/Project Management**
+
+- Facilitated training and provided ongoing support for a team of 14 classroom observers; led training for a team of 9 reconcilers.
+- Drafted deliverables, tracked project progress, and managed a budget of up to \$1M.
+- Prepared monthly project reports and meeting notes for IES, coordinating with internal and external task leads as well as the finance department.
+- Oversaw more than 50 author queries by managing communication with authors, reviewers, and reconcilers.
+
+### London South Bank University, Centre for Addictive Behaviours Research
+
+*Research Assistant* [October 2022 – December 2022]{style="float: right"}
+
+- Collaborated with researchers to evaluate the DrDoctor appointment management system.
+- Prepared recruitment materials, conducted a literature review on AI applications in healthcare, managed participant outreach, collected survey data, and coded data using SPSS.
+
+## Volunteer Experience
+
+### Victory Programs
+
+*Mobile Prevention Team Member*, Boston, MA [February 2022 – July 2025]{style="float: right"}
+
+- Provided evidence-based interventions to reduce the spread of infectious diseases and prevent overdoses.
+- Assembled and distributed harm reduction kits, which can contain sterile syringes, Narcan, and wound care supplies.
+
+## Publications
+
+Gilmour, A. F., & **Lam, T.** (2025). A systematic review and meta-analysis of dual-certification in special education and general education. *The Journal of Special Education, 60*(1), 14–24. <https://doi.org/10.1177/00224669251365233>
+
+Polanin, J. R., Austin, M., Peko-Spicer, S., Ezzat, Y., Katragadda, S. A., Michaelson, L., Iacocca, M. O., Williams, S., Ebersole, C., **Lam, T.**, & Clements, J. (2025). *MetaReviewer* (Version 1.4.0) [Computer software]. American Institutes for Research. <https://www.metareviewer.org/>
+
+## Technical Skills
+
+Microsoft Office Suite, MetaReviewer, SPSS, REDCap, NVivo, Stata
