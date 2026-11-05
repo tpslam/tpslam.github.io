@@ -16,4 +16,4 @@ This is my website for P8105 homework 4. It was built in R with R Markdown and i
 
 ## How it was made
 
-Each page is an R Markdown (`.Rmd`) file that is rendered into HTML, and the site structure and navigation are set in a `_site.yml` file. Everything is organized in an RStudio project and tracked with Git, so the whole site can be rebuilt from the files in the repository.
+Each page is an R Markdown file that is rendered into HTML, and the site structure and navigation are set in a `_site.yml` file. Everything is organized in an RStudio project and tracked with Git, so the whole site can be rebuilt from the files in the repository.
